@@ -14,7 +14,17 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent! I'll get back to you soon.");
+    // contruct email
+    const recipientEmail = "saadhikadua@gmail.com";
+    const emailSubject = `Portfolio Contact: ${formData.subject}`;
+    const emailBody = 
+    `Name: ${formData.name}
+    Email: ${formData.email}
+    Subject: ${formData.subject} 
+    Message: ${formData.message}`
+    const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoLink;
+    toast.success("Opening your email client...");
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
@@ -36,7 +46,7 @@ const Contact = () => {
             Let's Talk
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
-            Interested in working together, have a product challenge, or just want to connect? I'd love to hear from you.
+            Interested in working together, have a product challenge, or just want to connect? <br/>I'd love to hear from you!
           </p>
         </div>
 
@@ -107,7 +117,7 @@ const Contact = () => {
                   required
                   rows={6}
                   className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring resize-none"
-                  placeholder="Tell me about your opportunity, challenge, or project..."
+                  placeholder="Tell me about your opportunity, challenge, or project"
                 />
               </div>
               <Button 
@@ -130,7 +140,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <a href="mailto:hello@alexchen.pm" className="text-accent hover:underline">hello@alexchen.pm</a>
+                    <a href="mailto:hello@alexchen.pm" className="text-accent hover:underline">saadhikadua@gmail.com</a>
                     <p className="text-muted-foreground text-sm">I typically respond within 24-48 hours</p>
                   </div>
                 </div>
@@ -141,7 +151,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold mb-1">LinkedIn</h3>
                     <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
-                      linkedin.com/in/alexchen
+                      linkedin.com/in/saadhikadua
                     </a>
                     <p className="text-muted-foreground text-sm">Let's connect professionally</p>
                   </div>
@@ -156,7 +166,7 @@ const Contact = () => {
                     <p className="text-muted-foreground text-sm">Open to remote opportunities</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
+                {/* <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
                     <Calendar className="w-5 h-5" />
                   </div>
@@ -165,7 +175,7 @@ const Contact = () => {
                     <a href="#" className="text-accent hover:underline">Book a 30-min chat</a>
                     <p className="text-muted-foreground text-sm">For job opportunities or consulting</p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -175,19 +185,19 @@ const Contact = () => {
                 <div>
                   <h4 className="font-semibold mb-1">Full-time Roles</h4>
                   <p className="text-muted-foreground">
-                    Senior PM or Lead PM positions at product-led companies. Particularly interested in growth, mobile, or B2B SaaS.
+                    Roles at the interface of business and technology at product-led companies. Particularly interested in mid to large sized technology companies.
                   </p>
                 </div>
-                <div>
+                {/* <div>
                   <h4 className="font-semibold mb-1">Advisory / Consulting</h4>
                   <p className="text-muted-foreground">
                     Happy to advise early-stage startups on product strategy, roadmap development, or PM hiring.
                   </p>
-                </div>
+                </div> */}
                 <div>
-                  <h4 className="font-semibold mb-1">Speaking & Writing</h4>
+                  <h4 className="font-semibold mb-1">Volunteering</h4>
                   <p className="text-muted-foreground">
-                    Open to podcast appearances, conference talks, or contributing articles about product management.
+                    Open to contributing articles about product management, working in Big Tech or transitioning across roles and domains.
                   </p>
                 </div>
               </div>
