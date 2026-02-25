@@ -3,6 +3,7 @@ import { Briefcase } from "lucide-react";
 
 const ExperienceSection = () => {
   return (
+
     <section className="py-16 md:py-20">
       <div className="text-center mb-12 animate-slide-up">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">Experience</h2>

@@ -23,36 +23,35 @@ const HeroSection = () => {
               Open to opportunities
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight animate-slide-down">
-              Hi, I'm <span className="text-accent">Saadhika Dua</span>
+              Hi, I'm <span className="text-accent">Saadhika!</span>
             </h1>
             <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-xl animate-slide-up stagger-1">
-              Product Manager passionate about building user-centric products that drive business growth. 
-              I turn complex problems into simple, elegant solutions.
+              An engineer at heart, product leader in practice.
+              
             </p>
             <p className="text-muted-foreground text-base leading-relaxed max-w-xl animate-slide-up stagger-2">
-              5+ years of experience shipping products at startups and scale-ups. 
-              Specialized in growth, mobile, and product-led strategies.
+              Pairing technical rigor with business storytelling to turn user insights into roadmaps, experiments, and shipped features that customers actually adopt across Intuit, Cisco and SAP.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6 pt-4 animate-slide-up stagger-3">
-            <Button 
+            {/* <Button 
               className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-4 md:px-10 md:py-6 text-base font-medium transition-all hover:scale-105 w-full sm:w-auto"
               asChild
             >
               <a href="#projects">View My Work</a>
-            </Button>
+            </Button> */}
 
             <div className="flex items-center gap-3">
               <a
-                href="mailto:hello@alexchen.pm"
+                href="mailto:saadhikadua@gmail.com"
                 className="w-12 h-12 rounded-full border-2 border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center hover:scale-110"
                 aria-label="Email"
               >
                 <Mail className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/saadhikadua/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full border-2 border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center hover:scale-110"
@@ -60,13 +59,13 @@ const HeroSection = () => {
               >
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a
+              {/* <a
                 href="/resume.pdf"
                 className="w-12 h-12 rounded-full border-2 border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center hover:scale-110"
                 aria-label="Resume"
               >
                 <FileText className="w-5 h-5" />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

@@ -12,8 +12,8 @@ const Project = () => {
       <div className="min-h-screen bg-background">
         <Header />
         <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-          <p className="text-muted-foreground mb-8">The project you're looking for doesn't exist.</p>
+          <h1 className="text-4xl font-bold mb-4"></h1>
+          <p className="text-muted-foreground mb-8">The page is under construction right now, will soon update it with my personal projects, one of which will be a detailed blog on how I built my own website!</p>
           <Link to="/" className="text-accent hover:underline">
             ← Back to Home
           </Link>

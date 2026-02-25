@@ -10,7 +10,12 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import Experience from "./pages/Experience";
 import NotFound from "./pages/NotFound";
+import ExperienceSection from "./components/ExperienceSection";
+import SkillsSection from "./components/SkillsSection";
+import ProjectCard from "./components/ProjectCard";
+import Skills from "./pages/Skills";
 
 const queryClient = new QueryClient();
 
@@ -22,9 +27,12 @@ const App = () => (
       <HashRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/project/:id" element={<Project />} />
+          <Route path="/project" element={<Project />} />
           <Route path="/about" element={<About />} />
+          <Route path="/experience" element={<Experience />} /> 
+          <Route path="/project" element={<Project />} /> 
           <Route path="/contact" element={<Contact />} />
+          <Route path="/skills" element={<Skills />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

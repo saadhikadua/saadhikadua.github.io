@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+import { Link } from "react-router-dom";
+
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -37,27 +40,39 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center min-w-0">
             <a href="/" className="flex items-center gap-1.5 sm:gap-2">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-primary-foreground font-bold text-base sm:text-lg">A</span>
-              </div>
+              {/* <div className="w-7 h-7 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                <span className="text-primary-foreground font-bold text-base sm:text-lg">SD</span>
+              </div> */}
               <span className="text-base sm:text-xl font-bold font-serif truncate">Saadhika Dua</span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2">
-            <a href="/#projects" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+            <Link to="/project" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
               Projects
-            </a>
-            <a href="/#skills" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+            </Link>
+            {/* <a href="/#projects" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              Projects
+            </a> */}
+            <Link to="/skills" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
               Skills
-            </a>
-            <a href="/#experience" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+            </Link>
+            {/* <a href="/#skills" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              Skills
+            </a> */}
+            <Link to="/experience" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
               Experience
-            </a>
-            <a href="/about" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+            </Link>
+            {/* <a href="/#experience" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              Experience
+            </a> */}
+            <Link to="/about" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
               About
-            </a>
+            </Link>
+            {/* <a href="/#about" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              About
+            </a> */}
           </nav>
 
           {/* Actions */}
@@ -75,7 +90,7 @@ const Header = () => {
             </button>
             
             <Button className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-2 hover:scale-105 transition-all" asChild>
-              <a href="/contact">Get in Touch</a>
+              <a href="/#contact">Get in Touch</a>
             </Button>
 
             {/* Mobile Menu Button */}

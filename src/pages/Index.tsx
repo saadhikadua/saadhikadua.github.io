@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import IntroSection from "@/components/IntroSection";
 import SkillsSection from "@/components/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection";
+import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
 
 const Index = () => {
@@ -19,10 +20,10 @@ const Index = () => {
         <IntroSection />
 
         {/* Projects Grid */}
-        <section id="projects" className="py-12">
+        {/* <section id="projects" className="py-12">
           <div className="flex items-center justify-between mb-12 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Featured Projects</h2>
-            <a href="/projects" className="text-sm font-medium text-muted-foreground hover:text-accent transition-colors px-4 py-2 rounded-full hover:bg-muted/60">
+            <a href="/project" className="text-sm font-medium text-muted-foreground hover:text-accent transition-colors px-4 py-2 rounded-full hover:bg-muted/60">
               View all →
             </a>
           </div>
@@ -34,7 +35,7 @@ const Index = () => {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* Skills Section */}
         <div id="skills">
@@ -46,6 +47,9 @@ const Index = () => {
           <ExperienceSection />
         </div>
 
+
+
+
         {/* CTA Section */}
         <section className="my-20 rounded-[2.5rem] bg-card p-12 md:p-16 text-center animate-scale-in">
           <div className="max-w-2xl mx-auto space-y-8">
@@ -54,18 +58,18 @@ const Index = () => {
               I'm always interested in hearing about new product challenges and opportunities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/contact"
-                className="px-10 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 hover:scale-105 transition-all"
-              >
-                Get in Touch
-              </a>
-              <a 
+             <Link
+                  to="/contact"
+                  className="px-10 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90"
+                >
+                  Get in Touch
+                </Link>
+              {/* <a 
                 href="/resume.pdf"
                 className="px-10 py-4 rounded-full border-2 border-border font-medium hover:bg-muted hover:scale-105 transition-all"
               >
                 Download Resume
-              </a>
+              </a> */}
             </div>
           </div>
         </section>
