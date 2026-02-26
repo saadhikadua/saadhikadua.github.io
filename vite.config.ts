@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/saadhikadua.github.io/",      // e.g. "/saadhika-site/"
+  base: "/",      // e.g. "/saadhika-site/"
   build: {
     outDir: "docs",                // build output goes into docs/
   },
