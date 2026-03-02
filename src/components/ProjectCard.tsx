@@ -3,12 +3,12 @@ import { ArrowUpRight } from "lucide-react";
 interface ProjectCardProps {
   id: string;
   title: string;
-  company: string;
-  role: string;
+  company?: string;
+  role?: string;
   duration: string;
-  image: string;
+  image?: string;
   summary: string;
-  impact: string[];
+  impact?: string[];
 }
 
 const ProjectCard = ({ id, title, company, role, duration, image, summary, impact }: ProjectCardProps) => {
@@ -18,13 +18,7 @@ const ProjectCard = ({ id, title, company, role, duration, image, summary, impac
       className="group relative block rounded-[2.5rem] overflow-hidden card-hover"
     >
       {/* Image */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-muted rounded-[2.5rem]">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        
+      <div className="relative aspect-[6/3] overflow-hidden bg-muted rounded-[2.5rem]">
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         
@@ -51,7 +45,7 @@ const ProjectCard = ({ id, title, company, role, duration, image, summary, impac
             <p className="text-white/80 text-sm line-clamp-2">{summary}</p>
             
             {/* Impact highlights */}
-            <div className="flex flex-wrap gap-2 pt-2">
+            {/* <div className="flex flex-wrap gap-2 pt-2">
               {impact.slice(0, 2).map((item, index) => (
                 <span 
                   key={index}
@@ -60,14 +54,14 @@ const ProjectCard = ({ id, title, company, role, duration, image, summary, impac
                   {item}
                 </span>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
 
         {/* Floating circular arrow button */}
-        <div className="absolute bottom-6 right-6 floating-button">
+        {/* <div className="absolute bottom-6 right-6 floating-button">
           <ArrowUpRight className="w-5 h-5" />
-        </div>
+        </div> */}
       </div>
     </a>
   );

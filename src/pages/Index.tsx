@@ -6,6 +6,8 @@ import SkillsSection from "@/components/SkillsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projects";
+import ArticleCard from "@/components/ArticleCard";
+import Project from "./Project";
 
 const Index = () => {
   return (
@@ -46,6 +48,8 @@ const Index = () => {
         <div id="experience">
           <ExperienceSection />
         </div>
+
+      
 
 
 

@@ -16,6 +16,7 @@ import ExperienceSection from "./components/ExperienceSection";
 import SkillsSection from "./components/SkillsSection";
 import ProjectCard from "./components/ProjectCard";
 import Skills from "./pages/Skills";
+import Article from "./pages/Article";
 
 const queryClient = new QueryClient();
 
@@ -30,7 +31,7 @@ const App = () => (
           <Route path="/project" element={<Project />} />
           <Route path="/about" element={<About />} />
           <Route path="/experience" element={<Experience />} /> 
-          <Route path="/project" element={<Project />} /> 
+          <Route path="/article" element={<Article />} /> 
           <Route path="/contact" element={<Contact />} />
           <Route path="/skills" element={<Skills />} />
           <Route path="/privacy" element={<Privacy />} />

@@ -108,13 +108,13 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border animate-fade-in">
             <nav className="flex flex-col gap-4">
-              <a href="/#projects" className="text-sm font-medium hover:text-accent transition-colors">
+              <a href="/project" className="text-sm font-medium hover:text-accent transition-colors">
                 Projects
               </a>
-              <a href="/#skills" className="text-sm font-medium hover:text-accent transition-colors">
+              <a href="/skills" className="text-sm font-medium hover:text-accent transition-colors">
                 Skills
               </a>
-              <a href="/#experience" className="text-sm font-medium hover:text-accent transition-colors">
+              <a href="/experience" className="text-sm font-medium hover:text-accent transition-colors">
                 Experience
               </a>
               <a href="/about" className="text-sm font-medium hover:text-accent transition-colors">

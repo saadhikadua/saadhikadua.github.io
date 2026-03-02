@@ -5,24 +5,25 @@ import { projects } from "@/data/projects";
 
 const Project = () => {
   const { id } = useParams();
-  const project = projects.find((p) => p.id === id);
+  const project = projects.find((p) => p.id === id) ?? projects[0];
 
-  if (!project) {
-    return (
-      <div className="min-h-screen bg-background">
-        <Header />
-        <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-          <h1 className="text-4xl font-bold mb-4"></h1>
-          <p className="text-muted-foreground mb-8">The page is under construction right now, will soon update it with my personal projects, one of which will be a detailed blog on how I built my own website!</p>
-          <Link to="/" className="text-accent hover:underline">
-            ← Back to Home
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  // if (!project) {
+  //   return (
+  //     <div className="min-h-screen bg-background">
+  //       <Header />
+  //       <div className="max-w-4xl mx-auto px-4 py-20 text-center">
+  //         <h1 className="text-4xl font-bold mb-4"></h1>
+  //         <p className="text-muted-foreground mb-8">The page is under construction right now, will soon update it with my personal projects, one of which will be a detailed blog on how I built my own website!</p>
+  //         <Link to="/" className="text-accent hover:underline">
+  //           ← Back to Home
+  //         </Link>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
-  const otherProjects = projects.filter((p) => p.id !== id).slice(0, 2);
+  // const otherProjects = projects.filter((p) => p.id !== id).slice(0, 2);
+  const otherProjects = [];
 
   return (
     <div className="min-h-screen bg-background animate-fade-in">
@@ -39,25 +40,25 @@ const Project = () => {
         </Link>
 
         {/* Hero Image */}
-        <div className="relative aspect-video rounded-[2rem] overflow-hidden mb-8 animate-scale-in">
+        {/* <div className="relative aspect-video rounded-[2rem] overflow-hidden mb-8 animate-scale-in">
           <img
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        </div>
+        </div> */}
 
         {/* Project Header */}
         <div className="mb-12 animate-slide-up">
           <div className="flex flex-wrap items-center gap-4 mb-4">
-            <span className="px-4 py-1.5 rounded-full bg-accent/20 text-accent-foreground text-sm font-medium">
+            {/* <span className="px-4 py-1.5 rounded-full bg-accent/20 text-accent-foreground text-sm font-medium">
               {project.company}
             </span>
             <div className="flex items-center gap-2 text-muted-foreground text-sm">
               <Briefcase className="w-4 h-4" />
               {project.role}
-            </div>
+            </div> */}
             <div className="flex items-center gap-2 text-muted-foreground text-sm">
               <Calendar className="w-4 h-4" />
               {project.duration}
@@ -72,13 +73,13 @@ const Project = () => {
         </div>
 
         {/* Impact Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 animate-slide-up stagger-1">
+        {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 animate-slide-up stagger-1">
           {project.impact.map((item, index) => (
             <div key={index} className="bg-card rounded-2xl p-6 text-center">
               <div className="text-2xl font-bold text-accent">{item}</div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* Skills Used */}
         <div className="mb-12 animate-slide-up stagger-2">
@@ -98,15 +99,33 @@ const Project = () => {
         </div>
 
         {/* Case Study Content */}
-        <article className="prose prose-lg max-w-none animate-slide-up stagger-3">
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold mb-4">The Challenge</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              {project.content.challenge}
-            </p>
-          </section>
+        <article className=" max-w-none animate-slide-up stagger-3">
+            {project.subparas.map((para) => (
+              <section key={para.title} className="mb-8">
+                <h2 className="text-2xl font-bold mb-4">{para.title}</h2>
 
-          <section className="mb-12">
+                {para.body && (
+                  <p className="text-muted-foreground leading-relaxed">
+                    {para.body}
+                  </p>
+                )}
+
+                {para.bullets && para.bullets.length > 0 && (
+                  <ul className="list-disc ml-6 mt-2 text-muted-foreground">
+                    {para.bullets.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </section>
+            ))}
+          {/* {project.subparas.map((para) => (
+            <section className="mb-12">
+                <h2 className="text-2xl font-bold mb-4">{para.title}</h2>
+                <p className="text-muted-foreground leading-relaxed">{para.text}</p>
+            </section>
+           ))} */}
+          {/* <section className="mb-12">
             <h2 className="text-2xl font-bold mb-4">The Approach</h2>
             <p className="text-muted-foreground leading-relaxed">
               {project.content.approach}
@@ -118,7 +137,7 @@ const Project = () => {
             <p className="text-muted-foreground leading-relaxed">
               {project.content.outcome}
             </p>
-          </section>
+          </section> */}
         </article>
 
         {/* Other Projects */}
