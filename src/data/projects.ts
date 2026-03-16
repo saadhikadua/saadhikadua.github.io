@@ -1,3 +1,5 @@
+import { BookDashed } from "lucide-react";
+
 interface Subpara {
   title: string;
   body: string;
@@ -22,6 +24,7 @@ export interface Project {
     outcome: string;
   };
   subparas: Subpara[];
+  demo?:string 
 }
 
 export interface Experience {
@@ -115,22 +118,97 @@ export const projects: Project[] = [
       },
     ]
   },
-  // {
-  //   id: "project-002",
-  //   title: "Building a Mobile-First Dashboard",
-  //   company: "FinTech Startup",
-  //   role: "Senior Product Manager",
-  //   duration: "2023",
-  //   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80",
-  //   summary: "Spearheaded the development of a mobile-first analytics dashboard that became the company's most-used feature.",
-  //   impact: ["40% increase in daily active users", "4.8★ App Store rating", "Featured by Apple"],
-  //   skills: ["Mobile Product Strategy", "Data Visualization", "Agile Development"],
-  //   content: {
-  //     challenge: "Desktop-first users were struggling to access critical business insights on mobile. With 60% of logins happening on mobile devices, there was a significant gap in the mobile experience.",
-  //     approach: "Partnered with design and engineering to create a mobile-native experience from scratch. Prioritized the top 5 use cases based on user interviews and analytics. Used rapid prototyping to test concepts before development.",
-  //     outcome: "Delivered an intuitive mobile dashboard that increased daily active users by 40%. The app was featured on the App Store and received a 4.8-star rating with users praising its simplicity and speed.",
-  //   },
-  // },
+  {
+    id: "project-002",
+    title: "Buidling Guardrails and not just Dashboards",
+    company: "",
+    role: "",
+    duration: "2026",
+    image: "",
+    summary: "",
+    impact: [],
+    intro: "In one of my recent projects, multiple teams were working in a tightly serialized sequence, if Team A slipped, Teams B and C felt it immediately. We tracked everything in a shared spreadsheet, but the tool behaved like most spreadsheets do—silent. Dates moved, statuses changed, and downstream teams often learned about it only when things were already on fire.",
+    skills: ["Lightweight internal tooling", "Change governance", "Scripting & Automation"],
+    content: {
+      challenge: "",
+      approach: "",
+      outcome: "",
+    },
+    demo: "/assets/demoTracker.mp4",
+    subparas: [
+      {
+        title: "",
+        body: "As a product manager, I saw two problems:",
+        bullets: [
+          "Changes to critical fields (dates, statuses) had no enforced explanation. ",
+          "There was no automatic communication when upstream plans changed.",
+        ]
+      },
+      {
+        title: "",
+        body: "I didn’t want to introduce a heavyweight new tool just to fix this. Instead, I designed a light governance layer on top of Google Sheets."
+      },
+       {
+        title: "The Problem - Silent Changes in a Shared Plan",
+        body: "Our existing tracker captured the basics:",
+        bullets: [
+          "Team / Function",
+          "Deliverable",
+          "Start and End dates"
+        ]
+      },
+      {
+        title: "",
+        body: "It worked well for visibility, but not for accountability. Anyone could change dates or status with a single keystroke. People rarely documented *why* they changed something. Downstream teams had to constantly poll the sheet or rely on manual updates in meetings and Slack. When dependencies are serialized, “I moved my end date by a week” is not a harmless action; it’s effectively a product decision that impacts lead time, launch sequencing, and sometimes customer commitments. I wanted the tool to reflect that."
+      },
+      {
+        title: "Design Goals - Light Governance, Maximum Adoption",
+        body: "Before touching any implementation, I set three constraints:",
+        bullets: [
+          "Stay where users already work - No new tools or logins. The solution had to live inside Google Sheets.",
+          "Add guardrails, not friction for the sake of it  - If a change truly matters (e.g., dates or status), the system should enforce explanation and communication. For everything else, the sheet should feel normal.",
+          "Create an audit trail with minimal ceremony -  I wanted a history of “who changed, what and why” without forcing people into a complex workflow."
+        ]
+      },
+      {
+        title:"Solution - An 'on-edit' layer over Google Sheets",
+        body: "From those constraints, the solution boiled down to three user‑facing rules:",
+        bullets: [
+          "You can only change certain columns (dates/status) if you add or update a note on that cell.",
+          "Every accepted change must update the note, not just reuse an old one.",
+          "Every accepted change should send an email with context to the right person."
+        ]
+      },
+      {
+        title: "How it works for users",
+        body: "I implemented this as a small automation attached to the sheet. For team members, the experience looks like this:",
+        bullets: [
+          "They open the familiar tracker sheet. ",
+          "If they want to change a critical field (e.g., End Date or Status). They right‑click the cell → “Insert note” (or edit an existing note).  In that note, they describe the change in plain language - 'Blocked on security review; pushing out by one sprint.' ",
+          "Only after updating the note do they change the cell’s value."
+        ]
+      },
+      {
+        title: "",
+        body: "The automation enforces the behavior by reverting any change made to a governed cell if there is no note and showing a message asking the user to add one before editing again. If a user tries to reuse the exact same note as last time, the value is reverted once more and they are prompted to update the note text for the new edit. Once the note has been updated and the value is edited, the change is accepted and an email is sent to a configured address summarizing the team and deliverable, the field that changed, the old and new values, and the note explaining why. This turns a previously silent spreadsheet into something closer to a governed workflow: users can still move fast, but meaningful changes cannot happen without context. You can see a recording of the automation in action."
+      },
+      {
+        title: "Impact - Fewer Surprises",
+        body: "This lightweight layer changed the dynamic of how teams interacted with the plan:",
+        bullets: [
+          "Fewer surprises for downstream teams - Instead of discovering slippages days later, they get an immediate email with context whenever an upstream dependency changes.",
+          "Better quality updates - The note requirement nudges people to think: “What changed and why?” That thought process alone improves communication.",
+          "Less manual policing for the PM  - I no longer had to chase people for “what changed here?” updates; the system makes context a prerequisite for editing.",
+          "Stronger audit trail  -   For any deliverable, we can scroll through notes and email threads to reconstruct the decision history."
+        ]
+      },
+      {
+        title: "",
+        body: "Most importantly, this was achieved without moving teams into a new tool or forcing a heavy ticketing workflow. The tracker stayed familiar; the behavior around it evolved."
+      },
+
+    ]
+  },
   // {
   //   id: "project-003",
   //   title: "Launching a B2B Self-Serve Platform",

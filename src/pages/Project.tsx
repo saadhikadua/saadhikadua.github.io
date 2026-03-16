@@ -2,31 +2,33 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Calendar, Briefcase, ArrowUpRight } from "lucide-react";
 import Header from "@/components/Header";
 import { projects } from "@/data/projects";
+import demoTracker from "../assets/demoTracker.mp4";
 
 const Project = () => {
   const { id } = useParams();
-  const project = projects.find((p) => p.id === id) ?? projects[0];
+  // ensure same type comparison (string) so find reliably matches
+  const project = projects.find((p) => String(p.id) === String(id));
 
-  // if (!project) {
-  //   return (
-  //     <div className="min-h-screen bg-background">
-  //       <Header />
-  //       <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-  //         <h1 className="text-4xl font-bold mb-4"></h1>
-  //         <p className="text-muted-foreground mb-8">The page is under construction right now, will soon update it with my personal projects, one of which will be a detailed blog on how I built my own website!</p>
-  //         <Link to="/" className="text-accent hover:underline">
-  //           ← Back to Home
-  //         </Link>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  if (!project) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Header />
+        <div className="max-w-4xl mx-auto px-4 py-20 text-center">
+          <h1 className="text-4xl font-bold mb-4"></h1>
+          <p className="text-muted-foreground mb-8">The page is under construction right now, will soon update it with my personal projects, one of which will be a detailed blog on how I built my own website!</p>
+          <Link to="/" className="text-accent hover:underline">
+            ← Back to Home
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
-  // const otherProjects = projects.filter((p) => p.id !== id).slice(0, 2);
-  const otherProjects = [];
+  const otherProjects = projects.filter((p) => String(p.id) !== String(id));
 
   return (
-    <div className="min-h-screen bg-background animate-fade-in">
+    // force React to remount this tree when project.id changes to avoid reconciliation surprises
+    <div key={project.id} className="min-h-screen bg-background animate-fade-in">
       <Header />
       
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -88,6 +90,7 @@ const Project = () => {
           </h2>
           <div className="flex flex-wrap gap-2">
             {project.skills.map((skill) => (
+              // make key unique across projects
               <span
                 key={skill}
                 className="px-4 py-2 rounded-full bg-muted text-sm font-medium"
@@ -100,6 +103,11 @@ const Project = () => {
 
         {/* Case Study Content */}
         <article className=" max-w-none animate-slide-up stagger-3">
+          <div className="prose">
+             <p className="text-muted-foreground leading-relaxed mb-4">
+                    {project.intro}
+                  </p>
+          </div>
             {project.subparas.map((para) => (
               <section key={para.title} className="mb-8">
                 <h2 className="text-2xl font-bold mb-4">{para.title}</h2>
@@ -138,6 +146,14 @@ const Project = () => {
               {project.content.outcome}
             </p>
           </section> */}
+
+          {project.demo && (
+            <video controls width={560}>
+  <source src = {demoTracker} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+          )}
+
         </article>
 
         {/* Other Projects */}
@@ -151,13 +167,13 @@ const Project = () => {
                   to={`/project/${p.id}`}
                   className="group relative rounded-2xl overflow-hidden bg-card hover:shadow-lg transition-all"
                 >
-                  <div className="aspect-video overflow-hidden">
+                  {/* <div className="aspect-video overflow-hidden">
                     <img
                       src={p.image}
                       alt={p.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                  </div>
+                  </div> */}
                   <div className="p-6">
                     <span className="text-xs text-muted-foreground">{p.company}</span>
                     <h3 className="text-lg font-bold mt-1 group-hover:text-accent transition-colors">
