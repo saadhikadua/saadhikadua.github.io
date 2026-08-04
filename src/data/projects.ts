@@ -134,7 +134,7 @@ export const projects: Project[] = [
       approach: "",
       outcome: "",
     },
-    demo: "/assets/demoTracker.mp4",
+    // demo: "/assets/demoTracker.mp4",
     subparas: [
       {
         title: "",
